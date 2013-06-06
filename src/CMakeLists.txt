@@ -22,14 +22,23 @@ rock_executable(check_urdf SOURCES urdf_parser/check_urdf.cpp
 rock_executable(urdf_to_graphiz SOURCES urdf_parser/urdf_to_graphiz.cpp
                                 DEPS urdfdom_model )
 
-add_subdirectory(collada_parser)
+rock_find_pkgconfig(COLLADA collada-dom)
+if (${COLLADA_FOUND})
+    set(COLLADA_PARSER ${COLLADA_PARSER})
+    set(COLLADA_DOM ${COLLADA_DOM})
+    add_subdirectory(collada_parser)
 
-link_directories(${CMAKE_INSTALL_PREFIX}/lib) #This has to be removed. For some reason the link directory is not set.
+    FILE( GLOB COLLADA_PARSER_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} collada_parser/*.h )
+    message("${COLLADA_PARSER_HEADERS}")
+    install(FILES ${COLLADA_PARSER_HEADERS}
+            DESTINATION include/urdf/collada_parser)
+    add_definitions(-DHAS_COLLADA)
+endif()
+
 rock_library(urdf SOURCES model.cpp model.h
                   HEADERS model.h
-                  DEPS urdfdom_model collada_parser
-                  DEPS_PKGCONFIG collada-dom base-lib
-)
+                  DEPS urdfdom_model ${COLLADA_PARSER}
+                  DEPS_PKGCONFIG base-lib ${COLLADA_DOM})
 
 
 
@@ -43,8 +52,4 @@ message("${URDF_PARSER_HEADERS}")
 install(FILES ${URDF_PARSER_HEADERS}
         DESTINATION include/urdf/urdf_parser)
 
-FILE( GLOB COLLADA_PARSER_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} collada_parser/*.h )
-message("${COLLADA_PARSER_HEADERS}")
-install(FILES ${COLLADA_PARSER_HEADERS}
-        DESTINATION include/urdf/collada_parser)
 

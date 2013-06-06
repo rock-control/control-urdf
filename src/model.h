@@ -40,7 +40,6 @@
 #include <string>
 #include <map>
 #include "urdf_parser/urdf_parser.h"
-#include "collada_parser/collada_parser.h"
 
 
 namespace urdf{

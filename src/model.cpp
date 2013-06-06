@@ -130,8 +130,12 @@ bool Model::initString(const std::string& xml_string)
 
     // necessary for COLLADA compatibility
     if( IsColladaData(xml_string) ) {
+#ifdef HAS_COLLADA
         LOG_INFO("Parsing robot collada xml string");
         model = parseCollada(xml_string);
+#else
+        LOG_FATAL("Provided XML string looks like collada, but the URDF library has been built without collada support");
+#endif
     }
     else {
         LOG_INFO("Parsing robot urdf xml string");
