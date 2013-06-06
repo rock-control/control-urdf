@@ -1,6 +1,7 @@
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/urdf/urdfdom_headers)
 
 include_directories(urdfdom_headers)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 
 find_package(Boost REQUIRED)
@@ -45,7 +46,7 @@ rock_library(urdf SOURCES model.cpp model.h
 FILE( GLOB URDF_MODEL_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} urdf_model/*.h )
 message("${URDF_MODEL_HEADERS}")
 install(FILES ${URDF_MODEL_HEADERS}
-        DESTINATION include/urdf_model)
+        DESTINATION include/urdf/urdf_model)
 
 FILE( GLOB URDF_PARSER_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} urdf_parser/*.h )
 message("${URDF_PARSER_HEADERS}")
