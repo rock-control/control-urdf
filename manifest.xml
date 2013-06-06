@@ -13,7 +13,7 @@
   <!--depend package="workspace/kdl" /-->
   <!--rosdep name="osg"/-->
   <!--rosdep name="eigen3"/-->
-  <depend package="workspace/control/kdl" />
+  <depend package="control/kdl" />
   <depend package="base/types"/>
 
 </package>
