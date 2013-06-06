@@ -1,0 +1,19 @@
+<package>
+  <description brief="A kinematic model of the robot">
+  
+  </description>
+  <author>Malte Wirkus/malte.wirkus@dfki.de</author>
+  <license></license>
+  <url>http://</url>
+  <logo>http://</logo>
+
+
+  <!--depend package="gui/vizkit"/-->
+  <!--depend package="base/types" /-->
+  <!--depend package="workspace/kdl" /-->
+  <!--rosdep name="osg"/-->
+  <!--rosdep name="eigen3"/-->
+  <depend package="workspace/control/kdl" />
+  <depend package="base/types"/>
+
+</package>

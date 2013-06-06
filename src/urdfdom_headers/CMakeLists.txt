@@ -1,0 +1,4 @@
+FILE( GLOB URDF_DOM_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} urdf_exception/*.h )
+message(DOM HEADER "${URDF_DOM_HEADERS}")
+install(FILES ${URDF_DOM_HEADERS}
+        DESTINATION include/urdf_exception)
