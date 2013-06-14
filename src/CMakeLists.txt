@@ -53,4 +53,9 @@ message("${URDF_PARSER_HEADERS}")
 install(FILES ${URDF_PARSER_HEADERS}
         DESTINATION include/urdf/urdf_parser)
 
+FILE( GLOB URDF_EXCEPTION_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} urdf_exception/*.h )
+message("${URDF_EXCEPTION_HEADERS}")
+install(FILES ${URDF_EXCEPTION_HEADERS}
+        DESTINATION include/urdf_exception)
+
 
