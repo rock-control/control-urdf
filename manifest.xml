@@ -15,5 +15,6 @@
   <!--rosdep name="eigen3"/-->
   <depend package="control/kdl" />
   <depend package="base/types"/>
+  <depend package="external/tinyxml"/>
 
 </package>
